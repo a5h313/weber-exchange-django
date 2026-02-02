@@ -1,0 +1,35 @@
+/* =========================
+   Landing Page Styles
+   ========================= */
+
+.landing {
+    min-height: 100vh;
+    background: linear-gradient(
+        180deg,
+        var(--purple-cloud) 0%,
+        var(--snow-drift) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem;
+}
+
+.landing-content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.landing h1 {
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    color: var(--purple-main);
+}
+
+.landing p {
+    font-size: 1.1rem;
+    color: var(--gray-main);
+}

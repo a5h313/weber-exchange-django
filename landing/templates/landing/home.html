@@ -1,12 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
-WST: HOME
+    WST: HOME
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'landing/css/style.css' %}">
 {% endblock %}
 
 {% block content %}
-<h1>WST</h1>
-<p>Welcome to WST: Weber State Univ. Trade</p>
+    <div class="landing">
+        <div class="landing-content">
+            <h1>Weber Exchange</h1>
+            <p>Buy & Sell on Campus</p>
+        </div>
+
+        <img src="{% static 'landing/images/weberExchangeHero.png' %}" alt="hero" width="768px">
+    </div>
+
 {% endblock %}
 
 

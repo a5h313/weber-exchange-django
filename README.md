@@ -2,7 +2,9 @@
 
 ## update log
 
-### 011826
-#### Submission: [Capstone Project: Initial Setup]
+### 020126
+#### Submission: [Capstone Project: Static Style and Data Blueprint]
 ### 012526
 #### Submission: [Capstone Project: Template]
+### 011826
+#### Submission: [Capstone Project: Initial Setup]
