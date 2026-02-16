@@ -2,6 +2,10 @@
 
 ## update log
 
+### 021526
+#### Submission: [Capstone Project: Initial Database Setup(Continued)]
+- Complete all requirement including the rest of part 1.
+- Detail page is using landing page css temporarily.
 ### 020826
 #### Submission: [Capstone Project: Initial Database Setup]
 - Partial complete part 1 based on progress from the class.
