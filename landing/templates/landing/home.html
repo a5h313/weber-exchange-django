@@ -15,8 +15,18 @@
             <h1>Weber Exchange</h1>
             <p>Buy & Sell on Campus</p>
         </div>
-
         <img src="{% static 'landing/images/weberExchangeHero.png' %}" alt="hero" width="768px">
+
+        <ul>
+            {% for product in products %}
+                <li>
+                    <a href="{{ product.get_absolute_url }}">
+                        {{ product.title }} | ${{ product.price }} | {{ product.condition }}
+                    </a>
+                </li>
+
+            {% endfor %}
+        </ul>
     </div>
 
 {% endblock %}
