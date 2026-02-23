@@ -2,6 +2,8 @@
 
 ## update log
 
+### 022226
+#### Submission: [Capstone Project: Admin Configuration and Model Relationships]
 ### 021526
 #### Submission: [Capstone Project: Initial Database Setup(Continued)]
 - Complete all requirement including the rest of part 1.
