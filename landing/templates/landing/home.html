@@ -2,34 +2,38 @@
 {% load static %}
 
 {% block title %}
-    Weber Exchange
+Weber Exchange
 {% endblock %}
 
 {% block css_files %}
-    <link rel="stylesheet" href="{% static 'landing/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'landing/css/style.css' %}">
 {% endblock %}
 
 {% block content %}
-    <div class="landing">
-        <div class="landing-content">
-            <h1>Weber Exchange</h1>
-            <p>Buy & Sell on Campus</p>
-        </div>
+<div class="landing">
+    <div class="landing-content">
+        <h1>Weber Exchange</h1>
+        <p>Buy & Sell on Campus</p>
+    </div>
+    <div>
         <img src="{% static 'landing/images/weberExchangeHero.png' %}" alt="hero" width="768px">
+    </div>
 
+    <div>
         <ul>
             {% for product in products %}
-                <li>
-                    <a href="{{ product.get_absolute_url }}">
-                        {{ product.title }} | ${{ product.price }} | {{ product.condition }}
-                    </a>
-                </li>
+            <li>
+                <a href="{{ product.get_absolute_url }}">
+                    {{ product.title }}
+                </a>
+            </li>
 
             {% endfor %}
         </ul>
     </div>
 
-{% endblock %}
+</div>
 
+{% endblock %}
 
 

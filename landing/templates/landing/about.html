@@ -1,19 +1,56 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
-    WST: ABOUT
+ABOUT
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'landing/css/style.css' %}">
 {% endblock %}
 
 {% block content %}
-    <h1>About the Developer</h1>
-    <p>A.</p>
-    <br>
-    <h1>Project Goals</h1>
-    <p>College students need a lot of things: electronics, furniture, gadgets, or maybe even a video game console (!). However, not every college student can afford to buy everything they need exactly when they need it. Second-hand items? Sure—they're usually much more affordable.</p>
-    <p>Still, the world we live in can be a bit intimidating. You probably don't want to visit a random stranger's house to pick up a TV, and you definitely don’t want strangers walking into your bedroom either.</p>
-    <p>What if there were a community made exclusively for Weber State students? A place where you could post items you no longer need to earn a bit of pocket money—or simply give them away to free up space in your tiny room.</p>
-    <p>And what if exchanges could happen at familiar, public locations like in front of Noorda EAST Building, Stewart Library, or Shepard Union? Wouldn't that make you (and other students as well) feel much safer compared to dealing with complete strangers?</p>
-    <p>[WSU Trading] aims to create a face-to-face, hassle-free, and safe exchange environment exclusively for students at Weber State University.</p>
+<section class="about-section">
+    <div class="about-card">
+        <div class="about-header">
+            <h1>Project Goals</h1>
+            <p>
+                Safer, simpler, and more student-friendly marketplace<br>for the Weber State community.
+            </p>
+        </div>
+
+        <div class="about-body">
+            <p>
+                College students need many things: electronics, furniture, gadgets, or maybe even a video game console.
+                However, not every student can afford to buy everything they need exactly when they need it. Second-hand
+                items are often a much more affordable option.
+            </p>
+
+            <p>
+                Still, buying and selling in the outside world can feel uncomfortable or unsafe. Most people do not want
+                to visit a random stranger’s home to pick up a TV, and they certainly do not want strangers entering
+                their personal space either.
+            </p>
+
+            <p>
+                Weber Exchange was imagined as a community made specifically for Weber State students. It gives students
+                a place to sell items they no longer need, earn a little extra money, or simply give things away and
+                free up space.
+            </p>
+
+            <p>
+                The project also emphasizes meeting in familiar public locations such as the Noorda EAST Building,
+                Stewart Library, or Shepard Union. That makes exchanges feel more practical, convenient, and safer than
+                dealing with completely unknown people in private places.
+            </p>
+
+            <p>
+                In short, Weber Exchange aims to create a face-to-face, hassle-free, and safer exchange environment
+                designed specifically for the Weber State University community.
+            </p>
+        </div>
+    </div>
+</section>
 {% endblock %}
 
 

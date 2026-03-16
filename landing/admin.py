@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, Tag, ProductMeta, UserProfile
+from .models import Product, Category, Tag, ProductMeta, UserProfile, Feedback
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
@@ -50,3 +50,4 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Category)
 admin.site.register(Tag)
 admin.site.register(UserProfile)
+admin.site.register(Feedback)

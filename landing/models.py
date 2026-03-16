@@ -109,6 +109,12 @@ class Product(models.Model):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
+class Feedback(models.Model):
+    username = models.CharField(max_length=50)
+    email = models.EmailField()
+    subject = models.CharField(max_length=100)
+    message = models.TextField()
+
 
 
 

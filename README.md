@@ -2,6 +2,11 @@
 
 ## update log
 
+### 031526
+#### Submission: [Capstone Project: User Feedback Form]
+- Complete all requirement
+- Update CSS
+- Update About page
 ### 022226
 #### Submission: [Capstone Project: Admin Configuration and Model Relationships]
 ### 021526

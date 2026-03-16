@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpRequest, HttpResponse, Http404
+from django.http import HttpRequest, HttpResponse, Http404, HttpResponseRedirect
+
+from .forms import FeedbackForm
 from .models import Product
 
 # Create your views here.
@@ -27,6 +29,22 @@ def detail(request: HttpRequest, slug) -> HttpResponse:
         'image': product.image,
         'description': product.description,
     })
+
+def contact(request: HttpRequest) -> HttpResponse:
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/thanks/')
+    else:
+        form = FeedbackForm()
+
+    return render(request, 'landing/contact.html', {
+        'form': form
+    })
+
+def thanks(request: HttpRequest) -> HttpResponse:
+    return render(request, 'landing/thanks.html')
 
 def about(request: HttpRequest) -> HttpResponse:
     return render(request, 'landing/about.html')
