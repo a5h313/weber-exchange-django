@@ -114,6 +114,7 @@ class Feedback(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=100)
     message = models.TextField()
+    image = models.ImageField(upload_to='images_feedback/', null=True, blank=True)
 
 
 

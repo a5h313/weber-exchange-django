@@ -2,6 +2,9 @@
 
 ## update log
 
+### 032926
+#### Submission: [Capstone Project: Media Gallery and Session State]
+- Partial complete (part 1, 2, 3) based on progress from the class.
 ### 031526
 #### Submission: [Capstone Project: User Feedback Form]
 - Complete all requirement

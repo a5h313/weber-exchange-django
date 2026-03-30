@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Feedback List
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'landing/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="feedback-section">
+        <div class="feedback-shell">
+            <div class="feedback-header">
+                <h1>Feedback Gallery</h1>
+                <p>Browse user feedbacks.</p>
+            </div>
+
+            <div class="feedback-gallery">
+                {% for object in feedbacks %}
+
+                    <article class="feedback-card">
+                    <div class="feedback-image-wrapper">
+
+                        {% if object.image %}
+                            <img src="{{ object.image.url }}" alt={{ object.subject }} class="feedback-thumbnail">
+                        {% endif %}
+                    </div>
+
+
+                        <h3>{{ object.subject }}</h3>
+                        <p>{{ object.message|truncatewords:10 }}</p>
+
+                        {#      {% if object.id in request.session.favorites %}#}
+                        {#        <span>⭐</span>#}
+                        {#      {% endif %}#}
+
+                        <a class="feedback-link" href="{% url 'feedback-detail' object.id %}">
+                            View Details
+                        </a>
+
+                        {#      <form action="{% url 'toggle-favorite' object.id %}" method="POST">#}
+                        {#        {% csrf_token %}#}
+                        {#        <button type="submit">Toggle Favorite</button>#}
+                        {#      </form>#}
+
+                    </article>
+                {% empty %}
+                    <p class="feedback-empty">No feedback submitted yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
