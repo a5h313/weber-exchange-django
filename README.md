@@ -1,4 +1,4 @@
-# web3200_capstone
+# Weber Exchange
 
 ## update log
 
