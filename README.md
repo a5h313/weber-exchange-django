@@ -2,12 +2,16 @@
 
 ## update log
 
+### 040526
+#### Submission: [Capstone Project: Refinement and Polishing]
+- complete all requirements
+- complete part 4 of 'Capstone Project: Media Gallery and Session State'
 ### 032926
 #### Submission: [Capstone Project: Media Gallery and Session State]
 - Partial complete (part 1, 2, 3) based on progress from the class.
 ### 031526
 #### Submission: [Capstone Project: User Feedback Form]
-- Complete all requirement
+- Complete all requirements
 - Update CSS
 - Update About page
 ### 022226
