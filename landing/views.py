@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpRequest, HttpResponse, Http404, HttpResponseRedirect
 from django.views.generic import ListView, DetailView
 
@@ -46,24 +46,39 @@ def contact(request: HttpRequest) -> HttpResponse:
     })
 
 class UserFeedbackListView(ListView):
+    """Display a gallery of submitted feedback entries and highlight session favorites."""
     template_name = "landing/user-feedback-list.html"
     model = Feedback
     context_object_name = 'feedbacks'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['favorites'] = self.request.session.get('favorites', [])
+        return context
+
+
 class UserFeedbackDetailView(DetailView):
+    """Display the details of a single feedback entry and indicate favorite status."""
     template_name = "landing/user-feedback-detail.html"
     model = Feedback
     context_object_name = 'feedback'
 
-def toggle_favorite(request: HttpRequest, post_id) -> HttpResponse:
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['favorites'] = self.request.session.get('favorites', [])
+        return context
+
+def toggle_favorite(request: HttpRequest, feedback_id: int) -> HttpResponse:
+    feedback = get_object_or_404(Feedback, id=feedback_id)
     favorites = request.session.get('favorites', [])
 
-    if post_id in favorites:
-        favorites.remove(post_id)
+    if feedback_id in favorites:
+        favorites.remove(feedback_id)
     else:
-        favorites.append(post_id)
+        favorites.append(feedback_id)
 
     request.session['favorites'] = favorites
+    return redirect('feedback-detail', pk=feedback_id)
 
 def thanks(request: HttpRequest) -> HttpResponse:
     return render(request, 'landing/thanks.html')

@@ -12,7 +12,7 @@ class FeedbackForm(forms.ModelForm):
             'message': 'Message',
         }
         widgets = {
-            'user_name': forms.TextInput(attrs={'placeholder': 'Enter your name'}),
+            'username': forms.TextInput(attrs={'placeholder': 'Enter your name'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Enter your email'}),
             'subject': forms.TextInput(attrs={'placeholder': 'Enter a subject'}),
             'message': forms.Textarea(attrs={'placeholder': 'Write your message here'}),

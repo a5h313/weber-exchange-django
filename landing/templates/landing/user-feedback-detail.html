@@ -13,16 +13,27 @@
     <section class="feedback-section">
         <div class="feedback-detail-card">
             <div class="feedback-header">
-                <h1>{{ object.subject }}</h1>
+                <h1>
+                    {{ feedback.subject }}
+                    {% if feedback.id in favorites %}
+                        ⭐
+                    {% endif %}
+                </h1>
+
             </div>
 
-            {% if object.image %}
-                <img src="{{ object.image.url }}" alt="{{ object.subject }}" class="feedback-detail-image">
+            {% if feedback.image %}
+                <img src="{{ feedback.image.url }}" alt="{{ feedback.subject }}" class="feedback-detail-image">
             {% endif %}
 
             <div class="feedback-detail-body">
-                <p>{{ object.message }}</p>
+                <p>{{ feedback.message }}</p>
             </div>
+
+            <form action="{% url 'toggle-favorite' feedback.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Toggle Favorite</button>
+            </form>
 
             <div class="feedback-actions">
                 <a class="thanks-link" href="{% url 'feedback-list' %}">Back to Gallery</a>
@@ -30,14 +41,6 @@
         </div>
     </section>
 
-    {#  {% if object.id in request.session.favorites %}#}
-    {#    <p>⭐ Favorited</p>#}
-    {#  {% endif %}#}
-    {##}
-    {#  <form action="{% url 'toggle_favorite' object.id %}" method="POST">#}
-    {#    {% csrf_token %}#}
-    {#    <button type="submit">Toggle Favorite</button>#}
-    {#  </form>#}
 {% endblock %}
 
 
