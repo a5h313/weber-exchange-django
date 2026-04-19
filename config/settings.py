@@ -123,3 +123,15 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+# Login redirect
+LOGIN_REDIRECT_URL = '/my-page/'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
+
+# Email validation
+AUTHENTICATION_BACKENDS = [
+    'landing.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
