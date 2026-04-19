@@ -2,6 +2,16 @@
 
 ## update log
 
+### 041926
+#### Submission Ready
+- implement/modify core features:
+  - sign up, sign in, log out, and my page are now available.
+  - user can post product to sell.
+  - user can see posted product from my page.
+  - css improved.
+- upcoming features:
+  - message feature(thread).
+  - update my page(product management, message thread, etc) 
 ### 040526
 #### Submission: [Capstone Project: Refinement and Polishing]
 - complete all requirements
