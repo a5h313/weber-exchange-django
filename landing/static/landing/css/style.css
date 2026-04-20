@@ -120,6 +120,10 @@
     color: var(--gray-main);
 }
 
+.recently-viewed-section {
+    padding: 0 0 1.5rem;
+}
+
 /* =========================
    About
    ========================= */

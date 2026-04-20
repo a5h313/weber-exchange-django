@@ -8,14 +8,32 @@ from django.views.generic import ListView, DetailView
 from .forms import FeedbackForm, SignUpForm, ProductForm, ProductImageFormSet, EmailLoginForm
 from .models import Product, UserProfile, Tag
 
+RECENTLY_VIEWED_SESSION_KEY = "recently_viewed_products"
+RECENTLY_VIEWED_LIMIT = 5
 
 # Create your views here.
 def landing(request: HttpRequest) -> HttpResponse:
-    products = Product.objects.all().order_by('postedAt')[:5]
-    return render(request, 'landing/home.html', {
-        'products': products
-    })
+    products = Product.objects.all().order_by('-postedAt')[:5]
 
+    recent_ids = request.session.get(RECENTLY_VIEWED_SESSION_KEY, [])
+
+    recently_viewed_products = []
+    if recent_ids:
+        product_map = Product.objects.filter(
+            id__in=recent_ids,
+            available=True
+        ).in_bulk()
+
+        recently_viewed_products = [
+            product_map[product_id]
+            for product_id in recent_ids
+            if product_id in product_map
+        ]
+
+    return render(request, 'landing/home.html', {
+        'products': products,
+        'recently_viewed_products': recently_viewed_products,
+    })
 
 class ProductListView(ListView):
     template_name = "landing/product-list.html"
@@ -44,12 +62,31 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
     slug_url_kwarg = "slug"
     login_url = '/login/'
 
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        recent_ids = request.session.get(RECENTLY_VIEWED_SESSION_KEY, [])
+        product_id = self.object.id
+
+        if product_id in recent_ids:
+            recent_ids.remove(product_id)
+
+        recent_ids.insert(0, product_id)
+        recent_ids = recent_ids[:RECENTLY_VIEWED_LIMIT]
+
+        request.session[RECENTLY_VIEWED_SESSION_KEY] = recent_ids
+        request.session.modified = True
+
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         is_favorite = self.object.favorited_by.filter(id=self.request.user.id).exists()
         context["is_favorite"] = is_favorite
         return context
+
 
 
 

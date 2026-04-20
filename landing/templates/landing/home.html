@@ -31,7 +31,27 @@
         <img src="{% static 'landing/images/weberExchangeHero.png' %}" alt="Weber Exchange hero image">
     </div>
 </section>
+<section class="recently-viewed-section">
+    <div class="featured-shell">
+        <div class="featured-header">
+            <h2>Recently Viewed</h2>
+        </div>
 
+        <div class="featured-list">
+            {% for product in recently_viewed_products %}
+                <article class="featured-item">
+                    <a href="{% url 'product-detail' product.slug %}">
+                        {{ product.title }}
+                    </a>
+                </article>
+            {% empty %}
+                <p class="featured-empty">
+                    You have not viewed any products yet.
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 <section class="featured-section">
     <div class="featured-shell">
         <div class="featured-header">
